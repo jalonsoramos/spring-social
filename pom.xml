@@ -32,7 +32,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--         <start-class>com.autentia.tutoriales.ApplicationStarter</start-class> -->
     </properties>
 
     <build>
