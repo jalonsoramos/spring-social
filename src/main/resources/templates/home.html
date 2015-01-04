@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spring Social Twitter</title>
+	<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css"></link>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+</head>
+<body>
+	<h3>
+		Twitter de <span th:text="${twitterProfile}"></span>
+	</h3>
+
+	<div id="tabs">
+		<ul class="nav nav-tabs">
+			<li><a href="#timeline">Timeline</a></li>
+			<li><a href="#myTweets">Mis tweets</a></li>
+			<li><a href="#favorites">Favoritos</a></li>
+			<li><a href="#addTweet">Añadir tweet</a></li>
+		</ul>
+	
+		<div id="timeline" class="tab-pane">
+			<h4>Timeline</h4>
+			<table class="table table-bordered">
+				<tr th:each="tweet:${timeline}">
+					<td><img th:src="${tweet.profileImageUrl}"></img></td>
+					<td th:text="${tweet.text}"></td>
+					<td th:text="${tweet.createdAt}"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="myTweets" class="tab-pane">
+			<h4>Mis últimos tweets</h4>
+			<table class="table table-bordered">
+				<tr th:each="myTweet:${myTweets}">
+					<td th:text="${myTweet.text}"></td>
+					<td th:text="${myTweet.createdAt}"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="favorites" class="tab-pane">
+			<h4>Mis favoritos</h4>
+			<table class="table table-bordered">
+				<tr th:each="favorite:${favorites}">
+					<td><img th:src="${favorite.profileImageUrl}"></img></td>
+					<td th:text="${favorite.text}"></td>
+					<td th:text="${favorite.createdAt}"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="addTweet" class="tab-pane">
+			<h4>Añadir tweet</h4>
+			<form method="post" action="/">
+				Twittear: <input type="text" name="text" />  <input type="submit" value="Enviar" />
+			</form>	
+		</div>
+	</div>
+<script>
+	$("#tabs").tabs();
+</script>
+</body>
+</html>
